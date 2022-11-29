@@ -1,16 +1,20 @@
 import os
 import argparse
-import pandas as pd
 import shutil
 import logging
 from tqdm import tqdm
 from src.utils.all_utils import read_yaml, create_directory
 
-logging_str = "[%(asctime)s: %(levelname)s:%(module)s]:%(message)s"
+logging_str = "[%(asctime)s: %(levelname)s:%(module)s:%(lineno)d]:%(message)s"
 log_dir = "logs"
-#create_directory([log_dir])
+# create_directory([log_dir])
 os.makedirs(log_dir, exist_ok=True)
-logging.basicConfig(filename= os.path.join(log_dir,"running_logs.log"),level=logging.INFO,format=logging_str,filemode='a')
+logging.basicConfig(
+    filename=os.path.join(log_dir, "running_logs.log"),
+    level=logging.INFO,
+    format=logging_str,
+    filemode="a",
+)
 
 
 def copy_file(source_download_dir, local_data_dir):
@@ -31,9 +35,9 @@ def get_data(config_path):
     config = read_yaml(config_path)
 
     source_download_dirs = config["source_download_dirs"]
-    #print("source: ", source_download_dirs)
+    # print("source: ", source_download_dirs)
     local_data_dirs = config["local_data_dirs"]
-    #print("local: ", local_data_dirs)
+    # print("local: ", local_data_dirs)
 
     for source_download_dir, local_data_dir in tqdm(
         zip(source_download_dirs, local_data_dirs),
@@ -42,7 +46,7 @@ def get_data(config_path):
         colour="red",
     ):
         create_directory([local_data_dir])
-        #print("local: ", local_data_dirs)
+        # print("local: ", local_data_dirs)
         copy_file(source_download_dir, local_data_dir)
 
 

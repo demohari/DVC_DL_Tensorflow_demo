@@ -60,7 +60,7 @@ def prepare_base_model(config_path, params_path):
 
 
 if __name__ == "__main__":
-    os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"
+    
     args = argparse.ArgumentParser()
 
     args.add_argument("--config", "-c", default="config/config.yaml")

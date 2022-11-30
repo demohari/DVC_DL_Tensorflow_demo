@@ -60,7 +60,7 @@ def prepare_base_model(config_path, params_path):
 
 
 if __name__ == "__main__":
-    
+
     args = argparse.ArgumentParser()
 
     args.add_argument("--config", "-c", default="config/config.yaml")

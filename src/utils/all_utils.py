@@ -4,6 +4,7 @@ import json
 import logging
 import time
 
+
 def read_yaml(path_to_yaml: str) -> dict:
     with open(path_to_yaml) as yaml_file:
         content = yaml.safe_load(yaml_file)
@@ -26,6 +27,7 @@ def save_reports(report: dict, report_path: str, indentation=4):
     with open(report_path, "w") as f:
         json.dump(report, f, indent=indentation)
     logging.info(f"reports are saved at {report_path}")
+
 
 def get_timestamp(name):
     timestamp = time.asctime().replace(" ", "_").replace(":", "_")
